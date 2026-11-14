@@ -1,0 +1,7 @@
+TEAM_ID=
+
+PRODUCT_NAME=Kmp_mvi_compose_sample
+PRODUCT_BUNDLE_IDENTIFIER=com.suma.kmp_mvi_compose_sample.Kmp_mvi_compose_sample$(TEAM_ID)
+
+CURRENT_PROJECT_VERSION=1
+MARKETING_VERSION=1.0
