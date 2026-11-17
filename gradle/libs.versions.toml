@@ -1,5 +1,5 @@
 [versions]
-agp = "9.1.1"
+agp = "9.5.1"
 android-compileSdk = "37"
 android-minSdk = "24"
 android-targetSdk = "37"
@@ -13,9 +13,16 @@ androidx-testRunner = "1.7.0"
 composeMultiplatform = "1.12.2"
 junit = "4.13.2"
 kotlin = "2.4.21"
-kotlin-wrappers = "2026.10.4"
+kotlin-wrappers = "2026.11.1"
 kotlinx-coroutines = "1.11.0"
+kotlinx-coroutines-core = "1.11.0"
 material3 = "1.12.0-alpha03"
+kotlinxSerializationJson = "1.13.0"
+ktor = "3.6.1"
+ktorfit = "2.7.5"
+kotlinStdlib = "2.4.21"
+core = "1.7.0"
+koin = "4.2.2"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -37,7 +44,28 @@ compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "composeMul
 compose-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "composeMultiplatform" }
 compose-uiToolingPreview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "composeMultiplatform" }
 kotlinx-coroutinesSwing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines-core" }
 wrappers-browser = { module = "org.jetbrains.kotlin-wrappers:kotlin-browser", version.ref = "kotlin-wrappers" }
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlinStdlib" }
+androidx-core = { group = "androidx.test", name = "core", version.ref = "core" }
+
+
+#network
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" } # Android
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" } # iOS
+ktor-client-js = { module = "io.ktor:ktor-client-js", version.ref = "ktor" }         # Web
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+ktor-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktorfit-lib = { module = "de.jensklingenberg.ktorfit:ktorfit-lib", version.ref = "ktorfit" }
+
+#koin
+koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin"}
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin"}
+koin-core-viemodel = { module = "io.insert-koin:koin-core-viewmodel", version.ref = "koin"}
+koin-compose-viemodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koin"}
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -46,3 +74,7 @@ composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMul
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+androidLint = { id = "com.android.lint", version.ref = "agp" }
+#ktorfit
+kotlinKtorfit = { id = "de.jensklingenberg.ktorfit", version.ref = "ktorfit"}
+ksp = {id = "com.google.devtools.ksp", version = "2.3.9" }
