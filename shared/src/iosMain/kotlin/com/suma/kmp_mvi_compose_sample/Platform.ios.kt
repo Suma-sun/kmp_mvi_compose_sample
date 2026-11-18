@@ -18,8 +18,9 @@ actual fun currentDeviceInfo(): DeviceInfo {
     val screen = UIScreen.mainScreen
 
     // useContents 把 CValue<CGRect> 解包，lambda 的 receiver 就是 CGRect 本身
-    val screenWidth = screen.bounds.useContents { size.width.toInt() }
-    val screenHeight = screen.bounds.useContents { size.height.toInt() }
+    val (screenWidth, screenHeight) = screen.bounds.useContents {
+        size.width.toInt() to size.height.toInt()
+    }
 
     return DeviceInfo(
         platformName = device.systemName,
