@@ -1,0 +1,14 @@
+package com.suma.kmp_mvi_compose_sample
+
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.window.ComposeViewport
+import com.suma.kmp_mvi_compose_sample.di.initKoin
+
+@OptIn(ExperimentalComposeUiApi::class)
+fun main() {
+    initKoin()
+
+    ComposeViewport {
+        App()
+    }
+}

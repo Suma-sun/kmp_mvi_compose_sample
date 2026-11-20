@@ -77,6 +77,8 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.koin.core.viemodel)
             implementation(libs.koin.compose.viemodel)
+            implementation(libs.voyager.navigator)// 基础导航：Navigator / Screen
+            implementation(libs.voyager.screenmodel)// 可选：ScreenModel 状态容器
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -84,6 +86,9 @@ kotlin {
         jsMain.dependencies {
             implementation(libs.wrappers.browser)
         }
+//        wasmJsMain.dependencies {
+//            implementation(libs.compose.ui)
+//        }
         getByName("androidDeviceTest").dependencies {
             implementation(libs.androidx.testRunner)
         }

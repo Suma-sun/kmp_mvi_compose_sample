@@ -1,29 +1,19 @@
 package com.suma.kmp_mvi_compose_sample
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import org.jetbrains.compose.resources.painterResource
-
-import kmp_mvi_compose_sample.shared.generated.resources.Res
-import kmp_mvi_compose_sample.shared.generated.resources.compose_multiplatform
+import cafe.adriel.voyager.navigator.Navigator
+import com.suma.kmp_mvi_compose_sample.ui.main.MainScreen
 
 @Composable
 @Preview
 fun App() {
     MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
+        // 起始 Screen；后续 push/pop 都作用在这个 Navigator 的栈上
+        Navigator(MainScreen())
+
+        /*var showContent by remember { mutableStateOf(false) }
         Column(
             modifier = Modifier
                 .background(MaterialTheme.colorScheme.primaryContainer)
@@ -44,6 +34,6 @@ fun App() {
                     Text("Compose: $greeting")
                 }
             }
-        }
+        }*/
     }
 }

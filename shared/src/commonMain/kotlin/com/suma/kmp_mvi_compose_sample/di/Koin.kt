@@ -10,13 +10,29 @@ import com.suma.kmp_mvi_compose_sample.network.api.createTencentApi
 import com.suma.kmp_mvi_compose_sample.network.createHttpClient
 import com.suma.kmp_mvi_compose_sample.network.createKtorfit
 import io.ktor.client.HttpClient
+import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
+import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.module
 
+/**
+ * 跨平台初始化入口。
+ * Android 在 Application.onCreate 调，iOS 在 main 里调，Desktop 在 main 函数调。
+ */
+fun initKoin(appDeclaration: KoinAppDeclaration = {}) {
+    // 防止热重载/多入口重复启动
+    stopKoin()
+    startKoin {
+        appDeclaration()
+        modules(appModule)
+    }
+}
 
-    //single 数据库、Repository、HttpClient 等无界面状态的基础设施
-    //viewModel ViewModelStoreOwner（Activity、Fragment 或导航目的地），界面业务类，随页面出栈自动清理
-    //factory 轻量、有状态、短生命周期的对象，每次请求新建，用完即弃
-    //scoped  自定义 Scope（可绑定到 Composable 或导航条目），需要页面级共享但也要随页面销毁的对象
+
+//single 数据库、Repository、HttpClient 等无界面状态的基础设施
+//viewModel ViewModelStoreOwner（Activity、Fragment 或导航目的地），界面业务类，随页面出栈自动清理
+//factory 轻量、有状态、短生命周期的对象，每次请求新建，用完即弃
+//scoped  自定义 Scope（可绑定到 Composable 或导航条目），需要页面级共享但也要随页面销毁的对象
 
 val networkModule = module {
 
@@ -26,28 +42,28 @@ val networkModule = module {
      * 东方财富数据源
      */
     single<EastMoneyApi> {
-        createKtorfit("https://push2.eastmoney.com/",get()).createEastMoneyApi()
+        createKtorfit("https://push2.eastmoney.com/", get()).createEastMoneyApi()
     }
 
     /**
      * 新浪数据源
      */
     single<SinaApi> {
-        createKtorfit("http://hq.sinajs.cn/",get()).createSinaApi()
+        createKtorfit("http://hq.sinajs.cn/", get()).createSinaApi()
     }
 
     /**
      * 腾讯数据源
      */
     single<TencentApi> {
-        createKtorfit("http://hq.sinajs.cn/",get()).createTencentApi()
+        createKtorfit("http://hq.sinajs.cn/", get()).createTencentApi()
     }
 }
 
 val repositoryModule = module {
 
     single<StockRepository> {
-        StockRepository(get(),get(),get())
+        StockRepository(get(), get(), get())
     }
 
 }

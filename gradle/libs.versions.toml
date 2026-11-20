@@ -23,6 +23,7 @@ ktorfit = "2.7.5"
 kotlinStdlib = "2.4.21"
 core = "1.7.0"
 koin = "4.2.2"
+voyager = "2.2.21-1.10.3"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -65,7 +66,11 @@ koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin"}
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin"}
 koin-core-viemodel = { module = "io.insert-koin:koin-core-viewmodel", version.ref = "koin"}
 koin-compose-viemodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koin"}
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 
+#voyager
+voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
+voyager-screenmodel = { module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
